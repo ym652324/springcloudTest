@@ -5,7 +5,7 @@ server:
 
 spring:
   application:
-    name: could-provider-payment
+    name: cloud-provider-payment
 
 
   cloud:
