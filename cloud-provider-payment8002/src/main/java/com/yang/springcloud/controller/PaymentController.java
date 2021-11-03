@@ -1,6 +1,5 @@
 package com.yang.springcloud.controller;
 
-import com.yang.springcloud.service.PaymentService;
 import com.yang.springcloud.entities.CommonResult;
 import com.yang.springcloud.entities.Payment;
 import lombok.extern.slf4j.Slf4j;
@@ -9,6 +8,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
+
+import com.yang.springcloud.service.PaymentService;
 
 import java.util.List;
 
@@ -30,9 +31,9 @@ public class PaymentController {
         int result = paymentService.create(payment);
         log.info("******插入结果："+result);
         if(result>0){
-            return new CommonResult(200,"插入数据库成功,servertPort:"+servertPort,result);
+            return new CommonResult(200,"插入数据库成功,serverPort:"+servertPort,result);
         }
-        return new CommonResult(444,"插入数据库失败"+servertPort,null);
+        return new CommonResult(444,"插入数据库失败",null);
     }
 
 
@@ -41,7 +42,7 @@ public class PaymentController {
         Payment payment = paymentService.getPaymentById(id);
         log.info("******查询结果："+payment);
         if(payment!=null){
-            return new CommonResult(200,"查询数据库成功,servertPort"+servertPort,payment);
+            return new CommonResult(200,"查询数据库成功,serverPort:"+servertPort,payment);
         }
         return new CommonResult(444,"没有对应记录，查询ID："+id,null);
     }
