@@ -6,6 +6,13 @@ spring:
   application:
     name: cloud-order-service
 
+  http:
+    encoding:
+      force: true
+      charset: utf-8
+      enabled: true
+
+
 
 eureka:
   client:
